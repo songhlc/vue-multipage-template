@@ -10,6 +10,21 @@ var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env.js')
   : config.build.env
 
+Object.keys(baseWebpackConfig.entry).forEach(function(name) {
+  // 每个页面生成一个html
+  var plugin = new HtmlWebpackPlugin({
+    // 生成出来的html文件名
+    filename: name + '.html',
+    // 每个html的模版，这里多个页面使用同一个模版
+    template: './template.html',
+    // 自动将引用插入html
+    inject: true,
+    // 每个html引用的js模块，也可以在这里加上vendor等公用模块
+    chunks: ['manifest', 'vendor',name]
+  });
+  baseWebpackConfig.plugins.push(plugin);
+})
+
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     loaders: utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true })
@@ -41,36 +56,9 @@ var webpackConfig = merge(baseWebpackConfig, {
     new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
-    // see https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: process.env.NODE_ENV === 'testing'
-        ? 'index.html'
-        : config.build.index,
-      template: 'index.html',
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
-    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module, count) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        )
-      }
+      name: 'vendor'
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated

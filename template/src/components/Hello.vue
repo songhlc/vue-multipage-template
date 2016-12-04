@@ -17,18 +17,23 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
+    <h2>友云采多页面应用demo</h2>
+    <ul>
+      <li><a href="bidlist.html">投标列表</a></li>
+      <li><a href="biddetail.html">投标详细</a></li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   name: 'hello',
-  data() {
+  data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-    };
-  },
-};
+      msg: 'Welcome to Your Vue.js App'
+    }
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
