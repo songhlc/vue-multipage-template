@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "element-ui": "^1.0.4",
     "vue": "^2.0.1"
   },
   "devDependencies": {

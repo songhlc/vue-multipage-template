@@ -1,0 +1,26 @@
+body{
+  margin:0;
+  padding:0;
+}
+.m{
+  margin:10px;
+}
+.m-t{
+  margin-top: 10px;
+}
+.m-b{
+  margin-bottom: 10px;
+}
+.m-l{
+  margin-left: 10px;
+}
+.m-r{
+  margin-right:10px;
+}
+.m-tb{
+  margin: 10px 0;
+}
+.m-lr{
+  margin: 0 10px;
+}
+
