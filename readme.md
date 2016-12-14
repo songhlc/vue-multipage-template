@@ -15,6 +15,9 @@ vue init songhlc/vue-multipage-template <project-name>
 
 project-name 请输入自己的project-name
 
+3. 变更日志
+- 2016-12-14 修改产出bug,添加less支持,添加.vue文件的postcss支持
+
 ## 开发约束:
 - 1.多页面入口地址:src/pages/**/index.js(请保证所有入口页面都叫index.js)
 - 2.首页入口地址:src/pages/index/index.js
