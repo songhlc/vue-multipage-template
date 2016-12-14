@@ -20,7 +20,7 @@ Object.keys(baseWebpackConfig.entry).forEach(function(name) {
     // 自动将引用插入html
     inject: true,
     // 每个html引用的js模块，也可以在这里加上vendor等公用模块
-    chunks: ['manifest', 'vendor',name]
+    chunks: ['vendor', name]
   });
   baseWebpackConfig.plugins.push(plugin);
 })
@@ -32,8 +32,8 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
+    filename: utils.assetsPath('js/[name].[chunkhash].js')
   },
   vue: {
     loaders: utils.cssLoaders({
@@ -62,10 +62,10 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
-    })
+    //new webpack.optimize.CommonsChunkPlugin({
+    //  name: 'manifest',
+    //  chunks: ['vendor']
+    //})
   ]
 })
 

@@ -18,7 +18,7 @@ function getEntries(globPath) {
   return entries;
 }
 // tofix  需要提取的公共文件
-entry.vendor = ['vue', 'src/pages/common.js']
+entry.vendor = ['vue', 'element-ui']
 module.exports = {
   entry: entry
 }
