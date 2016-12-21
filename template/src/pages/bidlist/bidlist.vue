@@ -1,7 +1,8 @@
 <template>
   <div class="m">
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>
+        <a href="index.html">首页</a></el-breadcrumb-item>
       <el-breadcrumb-item>招标立项</el-breadcrumb-item>
     </el-breadcrumb>
     <el-row class="m-tb">
@@ -14,7 +15,14 @@
         </el-tabs>
       </el-col>
     </el-row>
-
+    <el-button type="primary">新增</el-button>
+    <el-select v-model="value" placeholder="请选择">
+      <el-option
+        v-for="item in options"
+        :label="item.label"
+        :value="item.value">
+      </el-option>
+    </el-select>
   </div>
 </template>
 <script>
@@ -22,7 +30,24 @@
     data () {
       return {
         data: 34,
-        activeName: 'first'
+        activeName: 'first',
+        options: [{
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }],
+        value: ''
       }
     },
     watch: {
